@@ -1,10 +1,39 @@
-<h1>{{title}}</h1>
-<input type="text" placeholder="Enter new item" id="" #task>
-<br><br>
-<button (click) = "addTask(task.value)"> Add new item </button>
-<br>
-<br>
+<!DOCTYPE html>
+<html lang="en">
 
-<ul *ngFor = "let item of list">
- <li>{{item.name}} <button (click) = "removeTask(item.id)">Remove</button> </li>
-</ul>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <h1>Shopping List</h1>
+
+    
+        <div class="container">
+            <form #gfgform="ngForm" class="form">
+                <span> Product: </span><input type="text" placeholder="Enter the item" class="item"
+                    [(ngModel)]="newItems" name='name' ngModel> 
+                <span>  Quantity: </span><input type="number" placeholder="Enter the quantity" class="item" [(ngModel)]="newQuant" name='quant' id = "num" ngModel> <br>
+                <button class="btn" (click)="addToList()">Add Item</button>
+            </form>
+        
+
+        <div class="cart">
+            <h2>List items:</h2>
+            <table class="table">
+                <thead>
+                    <tr *ngFor="let mapEntry of map | keyvalue">
+                        <td><label>Item : </label> {{ mapEntry.key }} </td>
+                        <td><i class="" aria-hidden="true"></i><label>Quantity</label> : {{ mapEntry.value }}</td><button id="remove"
+                            (click)="removeFromList(mapEntry.key)">X</button>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
